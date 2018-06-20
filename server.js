@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 var port = process.env.PORT || 3000;
 
 let points = {
@@ -17,7 +18,7 @@ let points = {
 }
 
 var app = express();
-app.use(express.bodyParser());
+app.use(bodyParser());
 app.get("/", function (req, res) {
     res.send(JSON.stringify(points));
 });
