@@ -18,7 +18,6 @@ app.get("/", function (req, res) {
 });
 
 app.post("/points", function (req,resp) {
-
     const body = req.body;
     points[body.id] = body.signal;
     resp.send("OK");
