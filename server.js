@@ -29,7 +29,7 @@ app.get("/", function (req, res) {
 app.post("/points", function (req,resp) {
     points.p1 = {
         id: "C3",
-        signal: -72
+        signal: -89
     };
     resp.send("OK");
 });
