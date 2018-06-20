@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 var port = process.env.PORT || 3000;
 
 let points = {
-    "F0:F5:67:84:84:40": 0,
-    "ED:A5:26:6B:B6:52": 0,
-    "C3:9C:42:81:79:D7": 0
+    "F0:F5:67:84:84:40": null,
+    "ED:A5:26:6B:B6:52": null,
+    "C3:9C:42:81:79:D7": null
 };
 
 var app = express();
@@ -19,7 +19,9 @@ app.get("/", function (req, res) {
 
 app.post("/points", function (req, resp) {
     const body = req.body;
-    points[body.id] = parseInt(points[body.id], 10) * 0.8 + parseInt(body.signal, 10) * 0.2;
+    const currentSingal = parseInt(body.signal, 10);
+    const prevSignal = parseInt(points[body.id], 10);
+    points[body.id] = prevSignal ? prevSignal * 0.8 + currentSingal * 0.2 : currentSingal;
     resp.send("OK");
 });
 app.listen(port, function () {
