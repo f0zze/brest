@@ -21,7 +21,7 @@ app.post("/points", function (req, resp) {
     const body = req.body;
     const nextSignal = parseInt(body.signal, 10);
     const prevSignal = parseInt(points[body.id] || "0", 10);
-    points[body.id] = prevSignal !== null ? prevSignal * 0.8 + nextSignal * 0.2 : nextSignal;
+    points[body.id] = prevSignal !== null ? prevSignal * 0.9 + nextSignal * 0.1 : nextSignal;
     resp.send("OK");
 });
 app.listen(port, function () {
