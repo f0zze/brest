@@ -17,9 +17,9 @@ app.get("/", function (req, res) {
     res.send(JSON.stringify(points));
 });
 
-app.post("/points", function (req,resp) {
+app.post("/points", function (req, resp) {
     const body = req.body;
-    points[body.id] = Number(points[body.id].signal) * 0.8 + Number(body.signal) * 0.2;
+    points[body.id] = parseInt(points[body.id].signal, 10) * 0.8 + parseInt(body.signal, 10) * 0.2;
     resp.send("OK");
 });
 app.listen(port, function () {
