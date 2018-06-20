@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 var port = process.env.PORT || 3000;
 
@@ -19,6 +20,8 @@ let points = {
 
 var app = express();
 app.use(bodyParser());
+app.use(cors());
+
 app.get("/", function (req, res) {
     res.send(JSON.stringify(points));
 });
