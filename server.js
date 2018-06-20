@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 app.post("/points", function (req, resp) {
     const body = req.body;
     const nextSignal = parseInt(body.signal, 10);
-    const prevSignal = parseInt(points[body.id], 10);
+    const prevSignal = parseInt(points[body.id] || "0", 10);
     points[body.id] = prevSignal !== null ? prevSignal * 0.8 + nextSignal * 0.2 : nextSignal;
     resp.send("OK");
 });
