@@ -19,7 +19,7 @@ app.get("/", function (req, res) {
 
 app.post("/points", function (req,resp) {
     const body = req.body;
-    points[body.id] = points[body.id].signal * 0.8 + body.signal * 0.2;
+    points[body.id] = Number(points[body.id].signal) * 0.8 + Number(body.signal) * 0.2;
     resp.send("OK");
 });
 app.listen(port, function () {
