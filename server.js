@@ -4,19 +4,10 @@ const bodyParser = require("body-parser");
 var port = process.env.PORT || 3000;
 
 let points = {
-    p1:{
-        id: "C3",
-        signal: -72
-    },
-    p2: {
-        id: "F0",
-        signal: -70
-    },
-    p3: {
-        id: "ED",
-        signal: -68
-    }
-}
+    "F0:F5:67:84:84:40": 0,
+    "D7:CD:B3:5F:58:DA": 0,
+    "C3:9C:42:81:79:D7": 0
+};
 
 var app = express();
 app.use(bodyParser());
@@ -27,10 +18,9 @@ app.get("/", function (req, res) {
 });
 
 app.post("/points", function (req,resp) {
-    points.p1 = {
-        id: "C3",
-        signal: -89
-    };
+
+    const body = req.body;
+    points[body.id] = body.signal;
     resp.send("OK");
 });
 app.listen(port, function () {
